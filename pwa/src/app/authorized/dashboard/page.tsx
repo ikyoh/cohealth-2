@@ -7,7 +7,7 @@ export default function PageDashBoard() {
     <>
       <SidebarLeft />
       <PageContent>
-        fsdfsd
+        page dashboard
       </PageContent>
     </>
   )

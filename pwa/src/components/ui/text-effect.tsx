@@ -177,7 +177,7 @@ const createVariantsWithTransition = (
 ): Variants => {
   if (!transition) return baseVariants;
 
-  const { exit: _, ...mainTransition } = transition;
+  const { ...mainTransition } = transition;
 
   return {
     ...baseVariants,
@@ -234,12 +234,12 @@ export function TextEffect({
 
   const customStagger = hasTransition(variants?.container?.visible ?? {})
     ? (variants?.container?.visible as TargetAndTransition).transition
-        ?.staggerChildren
+      ?.staggerChildren
     : undefined;
 
   const customDelay = hasTransition(variants?.container?.visible ?? {})
     ? (variants?.container?.visible as TargetAndTransition).transition
-        ?.delayChildren
+      ?.delayChildren
     : undefined;
 
   const computedVariants = {
