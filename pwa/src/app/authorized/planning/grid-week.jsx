@@ -2,9 +2,8 @@
 import { GripVertical } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
-import "./styles.css";
-// import "/node_modules/react-grid-layout/css/styles.css";
-// import "/node_modules/react-resizable/css/styles.css";
+// import "./styles.css";
+
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
