@@ -12,6 +12,10 @@ RUN apk add --no-cache libc6-compat
 
 WORKDIR /srv/app
 
+RUN npm install -g corepack@latest && \
+	corepack enable && \
+	corepack prepare --activate
+
 # Désactiver la télémétrie Next.js
 ENV NEXT_TELEMETRY_DISABLED 1
 
@@ -37,7 +41,7 @@ RUN npm ci --omit=dev
 
 COPY . .
 
-RUN npm run build
+RUN npm install --legacy-peer-deps && npm run build
 
 # ============================================================
 # Production image
