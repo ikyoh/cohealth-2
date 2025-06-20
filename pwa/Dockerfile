@@ -34,12 +34,13 @@ CMD ["sh", "-c", "npm install --legacy-peer-deps && npm run dev"]
 # ============================================================
 FROM base AS builder
 
-COPY --link package-lock.json ./
+COPY package.json package-lock.json ./
 
+RUN npm ci --omit=dev
 
-COPY --link . .
+COPY . .
 
-RUN npm ci --only=production && \
+RUN npm install && \
 	npm run build
 
 # ============================================================
@@ -53,6 +54,8 @@ ENV NODE_ENV production
 # Delete the following line in case you want to enable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# RUN addgroup --gid 1001 nodejs; \
+# 	adduser --uid 1001 nextjs
 
 COPY --from=builder --link /srv/app/public ./public
 
