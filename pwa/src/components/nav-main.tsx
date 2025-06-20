@@ -28,7 +28,7 @@ export function NavMain({
   items,
 }: {
   items: {
-    name: string
+    title: string
     url: string
     icon: LucideIcon
   }[]
@@ -40,14 +40,14 @@ export function NavMain({
       <SidebarGroupLabel>Mon activité</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <SidebarMenuItem key={item.name}>
+          <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild>
               <a href={item.url}>
                 <item.icon />
-                <span>{item.name}</span>
+                <span>{item.title}</span>
               </a>
             </SidebarMenuButton>
-            {item.name === "Missions" && (
+            {item.title === "Missions" && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuAction showOnHover>

@@ -280,27 +280,27 @@ const data = {
   ],
   projects: [
     {
-      name: "Planning",
+      title: "Planning",
       url: "/authorized/planning",
       icon: CalendarDays,
     },
     {
-      name: "Missions",
+      title: "Missions",
       url: "/authorized/missions",
       icon: BriefcaseMedical
     },
     {
-      name: "Collaborations",
+      title: "Collaborations",
       url: "#",
       icon: Users,
     },
     {
-      name: "Mandats",
+      title: "Mandats",
       url: "#",
       icon: ClipboardPlus,
     },
     {
-      name: "Patients",
+      title: "Patients",
       url: "#",
       icon: HeartPulse,
     },

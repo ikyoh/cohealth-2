@@ -9,7 +9,7 @@ import { ArrowRight, Cpu, Frame, MessagesSquare, NotepadText } from 'lucide-reac
 import * as motion from "motion/react-client"
 import Image from 'next/image'
 import Link from 'next/link'
-import { z } from "zod";
+
 
 const transitionVariants = {
   item: {
