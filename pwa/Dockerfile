@@ -34,13 +34,13 @@ CMD ["sh", "-c", "npm install --legacy-peer-deps && npm run dev"]
 # ============================================================
 FROM base AS builder
 
-COPY package.json package-lock.json ./
+COPY --link package-lock.json ./
 
-RUN npm ci --omit=dev
 
-COPY . .
+COPY --link . .
 
-RUN npm install && npm run build
+RUN npm ci --only=production && \
+	npm run build
 
 # ============================================================
 # Production image
@@ -50,25 +50,27 @@ FROM node_upstream AS prod
 WORKDIR /srv/app
 
 ENV NODE_ENV production
+# Delete the following line in case you want to enable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs && \
-	adduser --system --uid 1001 nextjs
+RUN addgroup --gid 1001 nodejs; \
+	adduser --uid 1001 nextjs
 
-# Copier uniquement les fichiers nécessaires pour réduire la taille de l'image
-COPY --from=builder /srv/app/public ./public
+COPY --from=builder --link /srv/app/public ./public
 
-# Définir les permissions pour le cache de rendu
-RUN mkdir -p .next && chown nextjs:nodejs .next
+# Set the correct permission for prerender cache
+RUN mkdir .next; \
+	chown nextjs:nodejs .next
 
-# Copier les fichiers essentiels pour l'exécution de Next.js
-COPY --from=builder --chown=1001:1001 /srv/app/.next/standalone ./
-COPY --from=builder --chown=1001:1001 /srv/app/.next/static ./.next/static
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --link --chown=1001:1001 /srv/app/.next/standalone ./
+COPY --from=builder --link --chown=1001:1001 /srv/app/.next/static ./.next/static
 
-# Exécuter avec un utilisateur non root
 USER nextjs
 
 EXPOSE 3000
+
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
