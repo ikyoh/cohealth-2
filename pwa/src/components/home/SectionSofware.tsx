@@ -106,7 +106,7 @@ export default function SectionSoftware({ id = 'software' }) {
                                     className="size-full overflow-hidden rounded-2xl border shadow-md">
                                     <Image
                                         src={images[activeItem].image}
-                                        className="size-full object-cover object-left-top dark:mix-blend-lighten p-1 rounded-xl"
+                                        className="size-full object-cover object-top-left dark:mix-blend-lighten p-1 rounded-xl"
                                         alt={images[activeItem].alt}
                                         width={1207}
                                         height={929}

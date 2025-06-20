@@ -55,7 +55,7 @@ export default function ViewWeek() {
         <div className="bg-sidebar p-3 rounded-lg">
             <div className="flex mb-3">
                 <div className="w-11"></div>
-                <div className="flex-1 grid grid-cols-7 divide-x-1">
+                <div className="flex-1 grid grid-cols-7 divide-x">
                     <div className="col-span-4 col-start-2 bg-secondary/20 rounded-md text-xs px-2 border border-sidebar">
                         Christophe - Congés
                     </div>
@@ -75,7 +75,7 @@ export default function ViewWeek() {
                 </div>
                 <div className="w-3">
                     <div className="h-[17px]"></div>
-                    <div className='divide-y-1'>
+                    <div className='divide-y'>
                         {Array(25).fill(0).map((_, i) => (
                             <div key={i} className="h-12">
                             </div>
@@ -83,17 +83,17 @@ export default function ViewWeek() {
                     </div>
                 </div>
                 <div className="flex-1 relative">
-                    <div className="grid grid-cols-7 divide-x-1 divide-transparent">
+                    <div className="grid grid-cols-7 divide-x divide-transparent">
                         {days.map((day, index) => <ColHeader day={day.name} key={day.id} index={index} />)}
                     </div>
                     <GridWeek />
-                    <div className="grid grid-cols-7 divide-x-1 border-l border-r">
+                    <div className="grid grid-cols-7 divide-x border-l border-r">
                         {Array(7).fill(0).map((_, i) => (
                             <div key={i} className="h-3">
                             </div>
                         ))}
                     </div>
-                    <div className="grid grid-cols-7 divide-x-1 divide-y-1 border-l border-r">
+                    <div className="grid grid-cols-7 divide-x divide-y border-l border-r">
                         {days.map((day) => <Col key={day.id} />)}
                     </div>
                 </div>
