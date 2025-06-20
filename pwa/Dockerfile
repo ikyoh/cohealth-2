@@ -8,7 +8,7 @@ FROM node_upstream AS base
 
 # Vérification de pourquoi libc6-compat peut être utile sur Alpine
 # https://github.com/nodejs/docker-node/tree/main#nodealpine
-RUN apk add --no-cache libc6-compat
+#RUN apk add --no-cache libc6-compat
 
 WORKDIR /srv/app
 
