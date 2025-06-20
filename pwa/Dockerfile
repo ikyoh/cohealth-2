@@ -40,8 +40,7 @@ RUN npm ci --omit=dev
 
 COPY . .
 
-RUN npm install && \
-	npm run build
+RUN npm install && npm run build
 
 # ============================================================
 # Production image
