@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Versions
-FROM node:lts AS node_upstream
+FROM node:20-slim AS node_upstream
 
 # Base stage for dev and build
 FROM node_upstream AS base
