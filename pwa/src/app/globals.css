@@ -8,8 +8,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-default);
-  /*--font-sans: var(--font-geist-sans);*/
-  /*--font-mono: var(--font-geist-mono);*/
   --font-mono: var(--font-default);
   --font-sans: var(--font-default);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -124,13 +122,13 @@
   body {
     @apply bg-background text-foreground;
   }
-    html {
-      @apply scroll-smooth;
+  html {
+    @apply scroll-smooth;
   }
 }
 
 
-/** ANIMATIONS **/
+/** ANIMATIONS 
 
 
 .autoBlur {
@@ -151,6 +149,7 @@
     animation-timeline: view(70% 5%);
 
 }
+
 @keyframes autoSlideFromLeft{
     from{
         opacity: 0;
@@ -160,3 +159,4 @@
         transform: translateX(0) scale(1);
     }
 }
+**/
